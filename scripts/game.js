@@ -71,11 +71,14 @@ class Game{
                 this.enemies1.splice(i, 1);
 
                 this.lifes --;
-            } else if(enemyOne.left <=0){
+            
+            // Points are obtanined trough the destruction of enemies 1
+
+            /* } else if(enemyOne.left <=0){
                 this.score ++;
                 enemyOne.element.remove();
                 this.enemies1.splice(i, 1)
-            }
+            } */
         }
 
         if(this.lifes === 0) {
