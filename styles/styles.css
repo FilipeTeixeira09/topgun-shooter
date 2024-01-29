@@ -1,0 +1,47 @@
+body {
+    text-align: center;
+    padding: 0;
+}
+
+/* Game intro stuff */
+#game-intro{
+    display: block;
+}
+.logo-img {
+    width: 500px;
+}
+#start-button{
+    margin-top: 100px;
+}
+
+/* Game Container stuff*/
+#game-container {
+    display:none;
+    align-content: center;
+    padding: 20px 0px;
+    overflow: hidden;
+    position: relative;
+    background-image: url(../images/ocean.jpg);
+    background-size: cover;
+    animation: slide 2s linear infinite;
+}
+@keyframes slide {
+  0% {
+    background-position: 0px 0px;
+  }
+  50% {
+    background-position: -500px 0px;
+  }
+  100% {
+    background-position: -1000px 0px;
+  }
+}
+
+#game-screen {
+    display: none;
+}
+
+/* Game Over stuff*/
+#game-over {
+    display: none;
+}

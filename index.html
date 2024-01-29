@@ -7,6 +7,37 @@
     <link rel="stylesheet" href="./styles/styles.css">
 </head>
 <body>
+    <main>
+        <!-- Starting Screen -->
+        <div id="game-intro">
+            <img src="/images/topgun-logo.png" alt="Logo" class="logo-img">
+            <br>
+            <button id="start-button">Start game</button>
+            <div id="instructions-container">
+                <p>Instructions</p>
+                <img src="" alt="instructions">
+            </div>
+            <p id="highestscore"></p>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-container">
+            <div id="game-screen"></div>
+            <div>
+                <p>Score: <span id="score">0</span></p>
+                <p> Lifes: <span id="lifes">5</span></p>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="game-over">
+            <img src="" alt="game-over">
+            <p>Score:</p>
+            <button id="restart-button">Restart</button>
+        </div>
+    </main>
+
+    <!-- Links for the scripts -->
     <script type="text/javascript" src="scripts/script.js"></script>
     <script type="text/javascript" src="scripts/player.js"></script>
     <script type="text/javascript" src="scripts/game.js"></script>
