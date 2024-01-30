@@ -28,25 +28,28 @@ class Player {
         this.top += this.directionY;
 
         //sides
-        if (this.left + this.width > this.gameScreen.offsetWidth){
-            this.left = this.gameScreen.offsetWidth - this.width;
+        // blocks right movement
+        if (this.left + this.width > this.gameScreen.offsetWidth - 100){
+            this.left = this.gameScreen.offsetWidth - this.width - 100;
         }
-        else if (this.left <= 0) {
-            this.left = 0;
+
+        // blocks left movement
+        else if (this.left <= 200) {
+            this.left = 200;
         }
 
         //top n bottom
-        if (this.top + this.height > this.gameScreen.offsetHeight) {
-            this.top = this.gameScreen.offsetHeight - this.height;
+        if (this.top + this.height > this.gameScreen.offsetHeight - 20) {
+            this.top = this.gameScreen.offsetHeight - this.height - 20;
         }
-        else if (this.top <= 0) {
-            this.top = 0;
+        else if (this.top <= 20) {
+            this.top = 20;
         }
 
-        this.updatePositioin()
+        this.updatePosition()
     }
 
-    updatePositioin(){
+    updatePosition(){
         this.element.style.left = `${this.left}px`;
         this.element.style.top = `${this.top}px`;
     }
@@ -57,17 +60,13 @@ class Player {
         // If part of my blueCar is inside the redCar, then I have a collision.
         if (
             playerRect.left < obstacleRect.right &&
-            playerRect.right > obstacleRect.left &&
-            playerRect.top < obstacleRect.bottom &&
-            playerRect.bottom > obstacleRect.top
+            playerRect.right - 50 > obstacleRect.left &&
+            playerRect.top + 10 < obstacleRect.bottom &&
+            playerRect.bottom - 10> obstacleRect.top
         ) {
             return true;
         } else {
             return false;
         }
-    }
-
-    shoot(){
-
     }
 }

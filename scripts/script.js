@@ -20,14 +20,14 @@ window.onload = function() {
 
     function handleKeyDown(event){
         const key = event.key;
-        const possibleKeys = ["ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown", " "];
+        const possibleKeys = ["ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown", ' '];
 
         if (possibleKeys.includes(key)){
             event.preventDefault();
             if(game){
                 switch (key){
                     case "ArrowLeft":
-                        game.player.directionX = -7;
+                        game.player.directionX = -10;
                         break;
                     case "ArrowRight":
                         game.player.directionX = 7;
@@ -38,8 +38,8 @@ window.onload = function() {
                     case "ArrowDown":
                         game.player.directionY = 7;
                         break;
-                    case " ":
-                        game.player.shoot();
+                    case ' ':
+                        game.isShooting = true;
                         break;
                 }
             }
@@ -48,7 +48,7 @@ window.onload = function() {
 
     function handleKeyUp(event){
         const key = event.key;
-        const possibleKeys = ["ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown", " "];
+        const possibleKeys = ["ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown", ' '];
 
         if (possibleKeys.includes(key)){
             event.preventDefault();
@@ -66,7 +66,8 @@ window.onload = function() {
                     case "ArrowDown":
                         game.player.directionY = 0;
                         break;
-                    case " ":
+                    case ' ':
+                        game.isShooting = false;
                         break;
                 }
             }
