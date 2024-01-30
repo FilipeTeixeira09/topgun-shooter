@@ -43,6 +43,12 @@ class Game{
         this.isShooting = false;
 
         this.bullets = [];
+
+        //Sounds
+
+        this.soundtrack = document.getElementById('soundtrack');
+        this.soundtrack.play();
+        this.ripSoundtrack = null;
     }
 
     start(){
@@ -89,8 +95,8 @@ class Game{
     
                 this.bullets.push(bullet);
                 this.isPushingBullet = false;
-            }, 300);
-          }
+            }, 200);
+        }
 
         // Here we define the conditions of HIT for the bullets
         if(this.bullets){
@@ -126,83 +132,75 @@ class Game{
                 this.enemies1.splice(i, 1);
 
                 this.lifes --;
-            } 
-            else if(enemyOne.left <= - enemyOne.width){
+            } else if(enemyOne.left <= - enemyOne.width){
                 enemyOne.element.remove();
                 this.enemies1.splice(i, 1)
             }
         }
 
-        // Enemies 2 conditions
-
-
-
-
         // Endgame Condition
         if(this.lifes === 0) {
             this.endGame();
-        } 
+        }
+        // Enemies 1 conditions
         else if (!this.enemies1.length && !this.isPushingEnemy){
             this.isPushingEnemy = true; // Makes that only appears one obstacle at a time
             setTimeout(()=>{
                 this.enemies1.push(new EnemyOne(this.gameScreen));
                 this.isPushingEnemy = false;
             }, 500)
-        }
-/*         for (let i=0; i<this.enemies2.length; i++){
-            this.enemies2.push(new EnemyTwo)
-        } */
         
-
-
+        // Enemies 2 conditions
+        if (!this.enemies2.length) {
+            this.enemies2.push(new EnemyTwo(this.gameScreen, 250, -580));
+            this.enemies2.push(new EnemyTwo(this.gameScreen, 70, -1180));
+            this.enemies2.push(new EnemyTwo(this.gameScreen, 430, -1780));
+            }
+        }
+        
+        score.innerHTML = this.score;
+        lifes.innerHTML = this.lifes;  
     }
 
     updateEnemies2(){
         let score = document.getElementById("score");
         let lifes = document.getElementById("lifes");
 
-        this.player.move();
-                // Enemies 2 conditions
-                for(let i = 0; i<this.enemies2.length; i++){
-                    const enemyTwo = this.enemies1[i];
-                    enemyTwo.moveIntro();
-                }
-    
-                // Endgame Condition
-                if(this.lifes === 0) {
-                    this.endGame();
-                } 
-                else if (!this.enemies2.length && !this.enemyTwoIsMoving){
-                    this.enemyTwoIsMoving = true; // Makes that only appears one obstacle at a time
+        // Endgame Condition
+        if (this.lifes === 0) {
+            this.endGame();
+        }
 
-                        this.enemies2.push(new EnemyTwo(this.gameScreen, 250));
-                        this.enemyTwoIsMoving = false;
-                }
+        for(let i = 0; i<this.enemies2.length; i++){
+            const enemyTwo = this.enemies2[i];
+            enemyTwo.moveIntro();
+
+            if(enemyTwo.left >= 20){
+                enemyTwo.left = 20;
             }
+        }
+        
+        score.innerHTML = this.score;
+        lifes.innerHTML = this.lifes;
+    }
 
-/*             setTimeout(() =>{ */
-/*                 this.enemyTwoIsMoving = true; */
-/*                 const enemy2 = new EnemyTwo(this.gameScreen, 250);
-                this.enemies2.push(enemy2); 
-            },3000); */
-/*             setTimeout(() =>{
-                this.enemyTwoIsMoving = true;
-                this.enemies2.push(new EnemyTwo(this.gameScreen, 100));
-            },6000); */
-/*             setTimeout(() =>{
-                this.enemyTwoIsMoving = true;
-                this.enemies2.push(new EnemyTwo(this.gameScreen, 400));
-            },9000); */
 
     endGame(){
+        let finalScore = document.getElementById("final-score");
+
         this.gameIsOver = true;
         this.player.element.remove();
         this.enemies1.forEach((enemy, index) =>{
             this.enemies1.splice(index, 1);
             enemy.element.remove();
         })
+        this.ripSoundtrack = document.getElementById('ripSoundtrack')
+        this.soundtrack.pause();
+        this.ripSoundtrack.play();
 
         this.gameScreen.style.display = "none";
         this.gameOver.style.display = "block";
+
+        finalScore.innerHTML = `Your Score: ${this.score}`;
     }
-    }
+}

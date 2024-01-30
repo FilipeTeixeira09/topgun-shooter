@@ -1,8 +1,8 @@
 class EnemyTwo {
-    constructor(gameScreen, top){
+    constructor(gameScreen, top, left){
         this.gameScreen = gameScreen;
 
-        this.left = 0;
+        this.left = left;
         this.top = top;
 
         this.width = 150;
@@ -20,7 +20,7 @@ class EnemyTwo {
     }
     
     moveIntro(){
-        this.left = +10;
+        this.left += 1;
         this.updatePosition();
     };
 

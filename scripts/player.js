@@ -34,8 +34,8 @@ class Player {
         }
 
         // blocks left movement
-        else if (this.left <= 200) {
-            this.left = 200;
+        else if (this.left <= 180) {
+            this.left = 180;
         }
 
         //top n bottom
