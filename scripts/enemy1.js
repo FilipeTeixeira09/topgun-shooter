@@ -21,7 +21,7 @@ class EnemyOne {
 
     move(){
         // Move Obstacle down
-        this.left -= 7;
+        this.left -= 5;
         this.updatePosition();
     }
 

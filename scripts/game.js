@@ -44,11 +44,21 @@ class Game{
 
         this.bullets = [];
 
-        //Sounds
+        this.guidedBulletsCenter = [];
+        this.guidedBulletsLeft = [];
+        this.guidedBulletsRight = [];
 
+        //Sounds - soundtrack
         this.soundtrack = document.getElementById('soundtrack');
         this.soundtrack.play();
+
+       
         this.ripSoundtrack = null;
+        
+        // SFX
+        this.bulletSound = document.getElementById('bullet-sound');
+        this.missile = document.getElementById('missile');
+        this.lastLifeBoom = document.getElementById('last-life-boom');
     }
 
     start(){
@@ -95,36 +105,38 @@ class Game{
     
                 this.bullets.push(bullet);
                 this.isPushingBullet = false;
-            }, 200);
+            }, 300);
         }
 
-        // Here we define the conditions of HIT for the bullets
+        // Here we define the conditions of HIT or miss for the bullets
         if(this.bullets){
-        this.bullets.forEach((bullet, bulletIndex)=>{
-            bullet.shoot();
+            this.bullets.forEach((bullet, bulletIndex)=>{
+                this.bulletSound.play();
+                bullet.shoot(); 
 
-            this.enemies1.forEach((enemy, obstacleIndex)=>{
-            if(bullet.didCollide(enemy)){
-                this.score += 1;
+                this.enemies1.forEach((enemy, obstacleIndex)=>{
+                    if(bullet.didCollide(enemy)){
+                        this.score += 1;
 
-                // Remove the obstacle element from the DOM
-                enemy.element.remove();
+                        // Remove the obstacle element from the DOM
+                        enemy.element.remove();
 
-                // Remove obstacle object from the array
-                this.enemies1.splice(obstacleIndex, 1);
+                        // Remove obstacle object from the array
+                        this.enemies1.splice(obstacleIndex, 1);
 
-                // Remove the bullet element from the DOM
-                bullet.element.remove();
+                        // Remove the bullet element from the DOM
+                        bullet.element.remove();
 
-                // Remove bullet object from the array
-                this.bullets.splice(bulletIndex, 1);
-            }
-            else{
-                if(bullet.left > this.gameScreen.offsetWidth){
-                    bullet.element.remove();
-                    this.bullets.splice(bulletIndex, 1);
-                }
-            }})
+                        // Remove bullet object from the array
+                        this.bullets.splice(bulletIndex, 1);
+                    }
+                    else{
+                        if(bullet.left > this.gameScreen.offsetWidth){
+                            bullet.element.remove();
+                            this.bullets.splice(bulletIndex, 1);
+                        }
+                    }
+                })
             })
         }
 
@@ -143,9 +155,149 @@ class Game{
                 this.enemies1.splice(i, 1)
             }
         }
+         
+        // Enemies 2 conditions
+        if (!this.enemies2.length) {
+            this.enemies2.push(new EnemyTwo(this.gameScreen, 250, -580));
+            this.enemies2.push(new EnemyTwo(this.gameScreen, 70, -1180));
+            this.enemies2.push(new EnemyTwo(this.gameScreen, 430, -1780));
+            }
+        
+        // Shooting from the 1st aircraft to arrive
+         setTimeout(()=>{
+                if(this.guidedBulletsCenter.length === 0){
+                    let guidedBullet1 = new GuidedBullet(
+                        this.gameScreen,
+                        170,
+                        295,
+                        50,
+                        25,
+                        "/images/rocket.png"
+                    )
+                    this.guidedBulletsCenter.push(guidedBullet1);
+                }
+
+                this.guidedBulletsCenter.forEach((bullet, index)=>{
+                    if(bullet.left > this.width){
+                        bullet.element.remove();
+                        this.guidedBulletsCenter.splice(index, 1)
+                    }
+                    bullet.shoot();
+                });
+        }, 11000);
+
+        // Shooting from the 2nd aircraft to arrive
+        setTimeout(()=>{
+            if(this.guidedBulletsLeft.length === 0){
+                let guidedBullet2 = new GuidedBullet(
+                    this.gameScreen,
+                    170,
+                    115,
+                    50,
+                    25,
+                    "/images/rocket.png"
+                )
+                this.guidedBulletsLeft.push(guidedBullet2);
+            }
+            
+            this.guidedBulletsLeft.forEach((bullet, index)=>{
+                if(bullet.left > this.width){
+                    bullet.element.remove();
+                    this.guidedBulletsLeft.splice(index, 1)
+                }
+                bullet.shoot();
+ 
+            });
+        }, 22000)
+
+        setTimeout(()=>{
+            if(this.guidedBulletsRight.length === 0){
+                let guidedBullet3 = new GuidedBullet(
+                    this.gameScreen,
+                    170,
+                    475,
+                    50,
+                    25,
+                    "/images/rocket.png"
+                )
+                this.guidedBulletsRight.push(guidedBullet3);
+            }
+
+                this.guidedBulletsRight.forEach((bullet, index)=>{
+                    if(bullet.left > this.width){
+                        bullet.element.remove();
+                        this.guidedBulletsRight.splice(index, 1)
+                    }
+                    bullet.shoot();
+
+                })
+        }, 33000); 
+
+        if(this.guidedBulletsCenter){
+            this.guidedBulletsCenter.forEach((bullet, bulletIndex)=>{
+
+                if(bullet.didCollide(this.player)){
+                    this.lifes --;
+
+                    // Remove the obstacle element from the DOM
+                    bullet.element.remove();
+
+                    // Remove obstacle object from the array
+                    this.guidedBulletsCenter.splice(bulletIndex, 1);
+                }
+                else{
+                    if(bullet.left > this.gameScreen.offsetWidth){
+                        bullet.element.remove();
+                        this.guidedBulletsCenter.splice(bulletIndex, 1);
+                    }
+                }
+            })
+        };
+
+        if(this.guidedBulletsLeft){
+            this.guidedBulletsLeft.forEach((bullet, bulletIndex)=>{
+
+                if(bullet.didCollide(this.player)){
+                    this.lifes --;
+
+                    // Remove the obstacle element from the DOM
+                    bullet.element.remove();
+
+                    // Remove obstacle object from the array
+                    this.guidedBulletsLeft.splice(bulletIndex, 1);
+                }
+                else{
+                    if(bullet.left > this.gameScreen.offsetWidth){
+                        bullet.element.remove();
+                        this.guidedBulletsLeft.splice(bulletIndex, 1);
+                    }
+                }
+            })
+        };
+
+        if(this.guidedBulletsRight){
+            this.guidedBulletsRight.forEach((bullet, bulletIndex)=>{
+
+                if(bullet.didCollide(this.player)){
+                    this.lifes --;
+
+                    // Remove the obstacle element from the DOM
+                    bullet.element.remove();
+
+                    // Remove obstacle object from the array
+                    this.guidedBulletsRight.splice(bulletIndex, 1);
+                }
+                else{
+                    if(bullet.left > this.gameScreen.offsetWidth){
+                        bullet.element.remove();
+                        this.guidedBulletsRight.splice(bulletIndex, 1);
+                    }
+                }
+            })
+        };
 
         // Endgame Condition
-        if(this.lifes === 0) {
+        if(this.lifes <= 0) {
             this.endGame();
         }
         // Enemies 1 conditions
@@ -154,14 +306,7 @@ class Game{
             setTimeout(()=>{
                 this.enemies1.push(new EnemyOne(this.gameScreen));
                 this.isPushingEnemy = false;
-            }, 500)
-        
-        // Enemies 2 conditions
-        if (!this.enemies2.length) {
-            this.enemies2.push(new EnemyTwo(this.gameScreen, 250, -580));
-            this.enemies2.push(new EnemyTwo(this.gameScreen, 70, -1180));
-            this.enemies2.push(new EnemyTwo(this.gameScreen, 430, -1780));
-            }
+            }, 100)
         }
         
         score.innerHTML = this.score;
@@ -173,7 +318,7 @@ class Game{
         let lifes = document.getElementById("lifes");
 
         // Endgame Condition
-        if (this.lifes === 0) {
+        if (this.lifes <= 0) {
             this.endGame();
         }
 
@@ -200,9 +345,11 @@ class Game{
             this.enemies1.splice(index, 1);
             enemy.element.remove();
         })
-        this.ripSoundtrack = document.getElementById('ripSoundtrack')
+
+        this.ripSoundtrack = document.getElementById('ripSoundtrack');
         this.soundtrack.pause();
         this.ripSoundtrack.play();
+        this.lastLifeBoom.play();
 
         this.gameScreen.style.display = "none";
         this.gameOver.style.display = "block";
