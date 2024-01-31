@@ -118,6 +118,12 @@ class Game{
 
                 // Remove bullet object from the array
                 this.bullets.splice(bulletIndex, 1);
+            }
+            else{
+                if(bullet.left > this.gameScreen.offsetWidth){
+                    bullet.element.remove();
+                    this.bullets.splice(bulletIndex, 1);
+                }
             }})
             })
         }
