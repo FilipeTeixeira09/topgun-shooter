@@ -3,8 +3,10 @@ class GuidedBullet extends Player{
       super(gameScreen, left, top, width, height, imgSrc); 
     }
 
-    shoot(){
-       this.left += 4;
-       this.updatePosition();
-    }
-}
+    shoot(playerTop){
+        let top = this.top;
+        this.left += 4;
+        this.top += playerTop - top;
+        this.updatePosition();
+    } 
+} 

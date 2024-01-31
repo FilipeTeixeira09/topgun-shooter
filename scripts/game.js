@@ -34,6 +34,8 @@ class Game{
         // Variable to check if we're in the process of moving the enemy 2
         this.enemyTwoIsMoving = false;
 
+        // Variable to store the moment of shooting - player top
+        this.lastMoment = false;
 
         // Check if game is over
         this.gameIsOver = false;
@@ -146,8 +148,9 @@ class Game{
             enemyOne.move();
 
             if(this.player.didCollide(enemyOne)){
-                enemyOne.element.remove();
-                this.enemies1.splice(i, 1);
+                    enemyOne.element.remove();
+                    this.enemies1.splice(i, 1);
+
 
                 this.lifes --;
             } else if(enemyOne.left <= - enemyOne.width){
@@ -182,9 +185,16 @@ class Game{
                         bullet.element.remove();
                         this.guidedBulletsCenter.splice(index, 1)
                     }
-                    bullet.shoot();
+                    if(this.lastMoment){
+                        var topPlayer = this.player.top + this.player.height/2;
+                    }
+                    this.lastMoment = true;
+                    bullet.shoot(topPlayer);
+                    this.lastMoment = false;
                 });
         }, 11000);
+
+
 
         // Shooting from the 2nd aircraft to arrive
         setTimeout(()=>{
@@ -204,7 +214,7 @@ class Game{
                 if(bullet.left > this.width){
                     bullet.element.remove();
                     this.guidedBulletsLeft.splice(index, 1)
-                }
+                };
                 bullet.shoot();
  
             });
