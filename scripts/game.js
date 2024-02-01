@@ -35,7 +35,7 @@ class Game{
         this.enemyTwoIsMoving = false;
 
         // Variable to store the moment of shooting - player top
-        this.lastMoment = false;
+        this.lastMoment = true;
 
         // Check if game is over
         this.gameIsOver = false;
@@ -169,6 +169,7 @@ class Game{
         // Shooting from the 1st aircraft to arrive
          setTimeout(()=>{
                 if(this.guidedBulletsCenter.length === 0){
+                    this.lastMoment = true;
                     let guidedBullet1 = new GuidedBullet(
                         this.gameScreen,
                         170,
@@ -183,14 +184,15 @@ class Game{
                 this.guidedBulletsCenter.forEach((bullet, index)=>{
                     if(bullet.left > this.width){
                         bullet.element.remove();
-                        this.guidedBulletsCenter.splice(index, 1)
+                        this.guidedBulletsCenter.splice(index, 1);
+                        this.lastMoment = true;
                     }
                     if(this.lastMoment){
                         var topPlayer = this.player.top + this.player.height/2;
+                        bullet.shoot(topPlayer);
+                        this.lastMoment = false;
                     }
-                    this.lastMoment = true;
                     bullet.shoot(topPlayer);
-                    this.lastMoment = false;
                 });
         }, 11000);
 
@@ -272,6 +274,7 @@ class Game{
 
                     // Remove the obstacle element from the DOM
                     bullet.element.remove();
+                    this.lastMoment = true;
 
                     // Remove obstacle object from the array
                     this.guidedBulletsLeft.splice(bulletIndex, 1);

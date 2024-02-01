@@ -6,6 +6,7 @@ body {
 /* Game intro stuff */
 #game-intro{
     display: block;
+    background-image: url(/images/start-screen.webp);
 }
 .logo-img {
     width: 500px;
@@ -20,7 +21,7 @@ body {
     align-content: center;
     padding: 20px 0px;
     overflow: hidden;
-    position: relative;
+    position: absolute;
     background-image: url(../images/ocean.jpg);
     background-size: cover;
     animation: slide 2s linear infinite;
