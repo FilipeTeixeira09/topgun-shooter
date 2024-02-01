@@ -20,22 +20,26 @@ window.onload = function() {
 
     function handleKeyDown(event){
         const key = event.key;
-        const possibleKeys = ["ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown", ' '];
+        const possibleKeys = ["ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown", ' ', 'w', 'a', 's', 'd'];
 
         if (possibleKeys.includes(key)){
             event.preventDefault();
             if(game){
                 switch (key){
                     case "ArrowLeft":
+                    case "a":
                         game.player.directionX = -10;
                         break;
                     case "ArrowRight":
+                    case "d":
                         game.player.directionX = 7;
                         break;
                     case "ArrowUp":
+                    case "w":
                         game.player.directionY = -7;
                         break;
                     case "ArrowDown":
+                    case "s":
                         game.player.directionY = 7;
                         break;
                     case ' ':
@@ -48,22 +52,26 @@ window.onload = function() {
 
     function handleKeyUp(event){
         const key = event.key;
-        const possibleKeys = ["ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown", ' '];
+        const possibleKeys = ["ArrowLeft", "ArrowUp", "ArrowRight", "ArrowDown", ' ', 'w', 'a', 's', 'd'];
 
         if (possibleKeys.includes(key)){
             event.preventDefault();
             if(game){
                 switch (key){
                     case "ArrowLeft":
+                    case "a":
                         game.player.directionX = 0;
                         break;
                     case "ArrowRight":
+                    case "d":
                         game.player.directionX = 0;
                         break;
                     case "ArrowUp":
+                        case "w":
                         game.player.directionY = 0;
                         break;
                     case "ArrowDown":
+                    case "s":
                         game.player.directionY = 0;
                         break;
                     case ' ':

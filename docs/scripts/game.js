@@ -355,7 +355,6 @@ class Game{
         lifes.innerHTML = this.lifes;
     }
 
-
     endGame(){
         let finalScore = document.getElementById("final-score");
 
@@ -376,12 +375,13 @@ class Game{
 
         finalScore.innerHTML = `Your Score: ${this.score}`;
 
-        const highestScore = localStorage.getItem("highestScore");
-        const lastHighScore = document.getElementById("highestScore")
-
-        if(highestScore && this.score > highestScore){
-            localStorage.setItem("highestScore", this.score);
-            lastHighScore.innerHTML = `HighestScore: ${highestScore}`
+        this.highestScore = localStorage.getItem("highestScore");
+        if (this.score > this.highestScore) {
+            localStorage.setItem("highestScore",this.score);
         }
+        let tempScore = document.getElementById("highestScore");
+        tempScore.innerHTML = `Highestscore = ${this.highestScore}`
+
+
     }
 }
