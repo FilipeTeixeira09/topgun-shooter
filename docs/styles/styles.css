@@ -61,16 +61,30 @@ body {
 
 /* Game Container stuff*/
 #game-container {
-    display: flex;
-    flex-direction: row-reverse;
-    padding: 20px 0px;
-    background-image: url("/docs/images/gameover-screen.jpeg");
-
+    display: none;
+    justify-content: baseline;
+    flex-direction: row;
+    background-image: linear-gradient(to bottom, black, navy);
+    background-size: cover;
+    max-width: 100%;
+    height: 700px;
+    background-attachment: fixed;
+}
+#game-screen {
+    margin-top: 50px;
+    margin-left: 50px;
+    display: none;
+    height: 600px;
+    width: 1000px;
     overflow: hidden;
     position: absolute;
     background-image: url(../images/ocean.jpg);
     background-size: cover;
     animation: slide 2s linear infinite;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 5px;
+    border-color: black;
 }
 @keyframes slide {
   0% {
@@ -83,10 +97,38 @@ body {
     background-position: -1000px 0px;
   }
 }
-#game-screen {
-    display: none;
-    padding-top: 100px;
-    padding: 100px;
+#rightScreen{
+  display: "none";
+  margin-top: 50px;
+  margin-left: 1150px;
+  flex-direction: column;
+  justify-content: baseline;
+  color: white;
+
+}
+.instructions{
+  font-size: 50px;
+  color: white;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+}
+#stats{
+  margin-top: 20;
+}
+.stats{
+  font-size: 20px;
+}
+#move{
+  width: 350px;
+}
+.healthbar{
+  width: 250px
+}
+.title{
+  font-size: 20px;
+}
+#spaceBar{
+  font-size: 30px;
 }
 
 /* Game Over stuff*/

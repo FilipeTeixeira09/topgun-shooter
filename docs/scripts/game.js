@@ -1,12 +1,10 @@
 class Game{
     constructor(){
         this.startScreen = document.getElementById("game-intro");
-        this.gameScreen = document.getElementById("game-container");
+        this.gameContainer = document.getElementById("game-container")
+        this.gameScreen = document.getElementById("game-screen");
         this.gameOver = document.getElementById("game-over");
-
-        // Game Board Sizing - Horizontal
-        this.height = 600;
-        this.width = 1000;
+        this.rightScreen = document.getElementById("rightScreen")
 
         // Player
         this.player = new Player(this.gameScreen,
@@ -64,13 +62,11 @@ class Game{
     }
 
     start(){
-        // Setting the dimentions of the game
-        this.gameScreen.style.height = `${this.height}px`
-        this.gameScreen.style.width = `${this.width}px`
-
         // Once we start the game, change screens from initial to the game screen
         this.startScreen.style.display = "none";
-        this.gameScreen.style.display = "flex";
+        this.gameContainer.style.display = "flex"
+        this.gameScreen.style.display = "block";
+        this.rightScreen.style.display = "flex"
 
         // Create the loop that makes the game work
         this.gameLoop();
@@ -329,8 +325,7 @@ class Game{
             }, 100)
         }
         
-        score.innerHTML = this.score;
-        lifes.innerHTML = this.lifes;  
+        score.innerHTML = this.score; 
     }
 
     updateEnemies2(){
@@ -352,7 +347,24 @@ class Game{
         }
         
         score.innerHTML = this.score;
-        lifes.innerHTML = this.lifes;
+
+        switch(this.lifes){
+            case 5:
+                document.querySelector(".healthbar").src = `/docs/images/health-bar-5.png`
+                break;
+            case 4:
+                document.querySelector(".healthbar").src = `/docs/images/health-bar-4.png`
+                break;
+            case 3:
+                document.querySelector(".healthbar").src = `/docs/images/health-bar-3.png`
+                break;
+            case 2:
+                document.querySelector(".healthbar").src = `/docs/images/health-bar-2.png`
+                break;
+            case 1:
+                document.querySelector(".healthbar").src = `/docs/images/health-bar-1.png`
+                break;
+        }
     }
 
     endGame(){
@@ -369,7 +381,7 @@ class Game{
         this.soundtrack.pause();
         this.ripSoundtrack.play();
         this.lastLifeBoom.play();
-
+        this.gameContainer.style.display = "none"
         this.gameScreen.style.display = "none";
         this.gameOver.style.display = "block";
 
@@ -380,7 +392,7 @@ class Game{
             localStorage.setItem("highestScore",this.score);
         }
         let tempScore = document.getElementById("highestScore");
-        tempScore.innerHTML = `Highestscore = ${this.highestScore}`
+        tempScore.innerHTML = `Highestscore: ${this.score}`
 
 
     }

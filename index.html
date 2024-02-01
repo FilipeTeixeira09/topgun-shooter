@@ -16,7 +16,7 @@
 
             <button id="start-button">Let's fly!</button>
 
-            <div id="highestScore">
+            <div id="highestScore">highestScore: 
             </div>
 
             <audio id="soundtrack" src="./docs/sounds/danger-zone.mp3"></audio>
@@ -26,13 +26,20 @@
         <div id="game-container">
             <div id="game-screen">
             </div>
-            <div>
+            <div id="rightScreen">
                 <div id="instructions-container">
-                    <p>Instructions</p>
-                    <img src="" alt="instructions">
+                    <p class="instructions">Instructions</p>
+                    <p class="title">Move:</p>
+                    <img id="move" src="/docs/images/move.png" alt="instructions">
+                    <br>
+                    <br>
+                    <p class="title">Shoot:</p>
+                    <p id="spaceBar">SpaceBar</p>
                 </div>
-                <p>Score: <span id="score">0</span></p>
-                <p>Lifes: <span id="lifes">5</span></p>
+                <div id="stats">
+                    <p class="stats">Score: <span id="score">0</span></p>
+                    <img class="healthbar" src="/docs/images/health-bar-5.png" alt="health5">
+                </div>
                 <audio id="bullet-sound" src="./docs/sounds/player-bullets.mp3"></audio>
                 <audio id="last-life-boom" src="./docs/sounds/last-life-boom.mp3"></audio>
                 <audio id="missile" src="./docs/sounds/missile.mp3"></audio>
