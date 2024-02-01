@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top Gun Shooter</title>
-    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./docs/styles/styles.css">
 </head>
 <body>
     <main>
         <!-- Starting Screen -->
         <div id="game-intro">
-            <img src="/images/topgun-logo.png" alt="Logo" class="logo-img">
+            <img src="./docs/images/topgun-logo.png" alt="Logo" class="logo-img">
             <br>
             <button id="start-button">Start game</button>
             <div id="instructions-container">
                 <p>Instructions</p>
                 <img src="" alt="instructions">
             </div>
-            <p id="highestscore"></p>
-            <audio id="soundtrack" src="/sounds/danger-zone.mp3"></audio>
+            <p id="highestScore"></p>
+            <audio id="soundtrack" src="./docs/sounds/danger-zone.mp3"></audio>
         </div>
 
         <!-- Game Screen -->
@@ -27,28 +27,28 @@
             <div>
                 <p>Score: <span id="score">0</span></p>
                 <p>Lifes: <span id="lifes">5</span></p>
-                <audio id="bullet-sound" src="/sounds/player-bullets.mp3"></audio>
-                <audio id="last-life-boom" src="/sounds/last-life-boom.mp3"></audio>
-                <audio id="missile" src="/sounds/missile.mp3"></audio>
+                <audio id="bullet-sound" src="./docs/sounds/player-bullets.mp3"></audio>
+                <audio id="last-life-boom" src="./docs/sounds/last-life-boom.mp3"></audio>
+                <audio id="missile" src="./docs/sounds/missile.mp3"></audio>
             </div>
         </div>
 
         <!-- Game Over Screen -->
         <div id="game-over">
-            <img src="/images/gameover-screen.jpeg" alt="game-over">
+            <img src="./docs/images/gameover-screen.jpeg" alt="game-over">
             <p id="final-score">Score:</p>
             <button id="restart-button">Restart</button>
-            <audio id="ripSoundtrack" src="/sounds/rip.mp3"></audio>
+            <audio id="ripSoundtrack" src="./docs/sounds/rip.mp3"></audio>
         </div>
     </main>
 
     <!-- Links for the scripts -->
-    <script type="text/javascript" src="scripts/script.js"></script>
-    <script type="text/javascript" src="scripts/player.js"></script>
-    <script type="text/javascript" src="scripts/game.js"></script>
-    <script type="text/javascript" src="scripts/enemy1.js"></script>
-    <script type="text/javascript" src="scripts/enemy2.js"></script>
-    <script type="text/javascript" src="scripts/bullet.js"></script>
-    <script type="text/javascript" src="scripts/guided-bullet.js"></script>
+    <script type="text/javascript" src="./docs/scripts/script.js"></script>
+    <script type="text/javascript" src="./docs/scripts/player.js"></script>
+    <script type="text/javascript" src="./docs/scripts/game.js"></script>
+    <script type="text/javascript" src="./docs/scripts/enemy1.js"></script>
+    <script type="text/javascript" src="./docs/scripts/enemy2.js"></script>
+    <script type="text/javascript" src="./docs/scripts/bullet.js"></script>
+    <script type="text/javascript" src="./docs/scripts/guided-bullet.js"></script>
 </body>
 </html>

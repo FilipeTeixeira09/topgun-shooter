@@ -14,7 +14,7 @@ class Game{
             500,
             150,
             100,
-            "/images/player.png")
+            "./docs/images/player.png")
 
         // Enemies 1
         this.enemies1 = [];
@@ -102,7 +102,7 @@ class Game{
                   this.player.top + this.player.height / 2,
                   30,
                   10,
-                  "/images/bullet.png"
+                  "./docs/images/bullet.png"
                 );
     
                 this.bullets.push(bullet);
@@ -176,7 +176,7 @@ class Game{
                         295,
                         50,
                         25,
-                        "/images/rocket.png",
+                        "./docs/images/rocket.png",
                     )
                     this.guidedBulletsCenter.push(guidedBullet1);
                 }
@@ -206,7 +206,7 @@ class Game{
                     115,
                     50,
                     25,
-                    "/images/rocket.png"
+                    "./docs/images/rocket.png"
                 )
                 this.guidedBulletsLeft.push(guidedBullet2);
             }
@@ -233,7 +233,7 @@ class Game{
                     475,
                     50,
                     25,
-                    "/images/rocket.png"
+                    "./docs/images/rocket.png"
                 )
                 this.guidedBulletsRight.push(guidedBullet3);
             }
@@ -375,5 +375,13 @@ class Game{
         this.gameOver.style.display = "block";
 
         finalScore.innerHTML = `Your Score: ${this.score}`;
+
+        const highestScore = localStorage.getItem("highestScore");
+        const lastHighScore = document.getElementById("highestScore")
+
+        if(highestScore && this.score > highestScore){
+            localStorage.setItem("highestScore", this.score);
+            lastHighScore.innerHTML = `HighestScore: ${highestScore}`
+        }
     }
 }
