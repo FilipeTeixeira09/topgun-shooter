@@ -70,7 +70,7 @@ class Game{
 
         // Once we start the game, change screens from initial to the game screen
         this.startScreen.style.display = "none";
-        this.gameScreen.style.display = "block";
+        this.gameScreen.style.display = "flex";
 
         // Create the loop that makes the game work
         this.gameLoop();

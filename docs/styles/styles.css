@@ -1,31 +1,71 @@
+@font-face {
+  font-family: 'TOPGUN';
+  src: url('/docs/fonts/TopOne-Regular.eot');
+  src: url('/docs/fonts/TopOne-Regular.eot?#iefix') format('embedded-opentype'),
+      url('/docs/fonts/TopOne-Regular.woff2') format('woff2'),
+      url('/docs/fonts/TopOne-Regular.woff') format('woff'),
+      url('/docs/fonts/TopOne-Regular.ttf') format('truetype'),
+      url('/docs/fonts/TopOne-Regular.svg#TopOne-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
     text-align: center;
     padding: 0px 0px;
     margin: 0px 0px;
+    font-family: TOPGUN, Arial, Helvetica, sans-serif;
 }
 
 /* Game intro stuff */
 #game-intro{
+    /*display: block;*/
     display: block;
     background-image: url('/docs/images/start-screen.webp');
     background-repeat: no-repeat;
     background-size: cover;
-    width: auto;
-    height: 695px;
-   
+    background-position: 0, 10;
+    max-width: 100%;
+    height: 1000px;
+    background-attachment: fixed;
 }
 .logo-img {
+  margin-top: 50px;
     width: 500px;
 }
 #start-button{
-    margin-top: 100px;
+    padding: 10px 120px;
+    padding-top: 20px;
+    margin-top: 150px;
+    margin-bottom: 50px;
+
+    font-size: 50px;
+    color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    font-size: 70px;
+
+    background-color: black;
+    border-radius: 10px;
+    border-width: 4px;
+    border-color: black;
+    border-style:solid;
+
+    font-family: TOPGUN, Arial, Helvetica, sans-serif;
+}
+#highestScore{
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 /* Game Container stuff*/
 #game-container {
-    display:none;
-    align-content: center;
+    display: flex;
+    flex-direction: row-reverse;
     padding: 20px 0px;
+    background-image: url("/docs/images/gameover-screen.jpeg");
+
     overflow: hidden;
     position: absolute;
     background-image: url(../images/ocean.jpg);
@@ -43,12 +83,43 @@ body {
     background-position: -1000px 0px;
   }
 }
-
 #game-screen {
     display: none;
+    padding-top: 100px;
+    padding: 100px;
 }
 
 /* Game Over stuff*/
 #game-over {
     display: none;
+    background-color: black;
+    height: 1000px;
+    background-attachment: fixed;
+};
+.gameOverGif{
+  margin-top: 500px;
+  width: 50px;
+}
+#restart-button{
+  padding: 20px 100px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-size: 70px;
+
+  font-size: 50px;
+  color: white;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+
+  background-color: black;
+  border-radius: 10px;
+  border-width: 4px;
+  border-color: black;
+  border-style:solid;
+
+  font-family: TOPGUN, Arial, Helvetica, sans-serif;
+}
+#final-score{
+  margin-top: 100px;
+  color: white;
 }

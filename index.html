@@ -11,20 +11,26 @@
         <!-- Starting Screen -->
         <div id="game-intro">
             <img src="./docs/images/topgun-logo.png" alt="Logo" class="logo-img">
+
             <br>
-            <button id="start-button">Start game</button>
-            <div id="instructions-container">
-                <p>Instructions</p>
-                <img src="" alt="instructions">
+
+            <button id="start-button">Let's fly!</button>
+
+            <div id="highestScore">
             </div>
-            <div id="highestScore"></div>
+
             <audio id="soundtrack" src="./docs/sounds/danger-zone.mp3"></audio>
         </div>
 
         <!-- Game Screen -->
         <div id="game-container">
-            <div id="game-screen"></div>
+            <div id="game-screen">
+            </div>
             <div>
+                <div id="instructions-container">
+                    <p>Instructions</p>
+                    <img src="" alt="instructions">
+                </div>
                 <p>Score: <span id="score">0</span></p>
                 <p>Lifes: <span id="lifes">5</span></p>
                 <audio id="bullet-sound" src="./docs/sounds/player-bullets.mp3"></audio>
@@ -35,8 +41,9 @@
 
         <!-- Game Over Screen -->
         <div id="game-over">
-            <img src="./docs/images/gameover-screen.jpeg" alt="game-over">
-            <p id="final-score">Score:</p>
+            <img class="gameOverGif" src="./docs/images/game-over2.gif" alt="game-over">
+            <br>
+            <p id="final-score">Your score:</p>
             <button id="restart-button">Restart</button>
             <audio id="ripSoundtrack" src="./docs/sounds/rip.mp3"></audio>
         </div>
