@@ -176,23 +176,22 @@ class Game{
                         295,
                         50,
                         25,
-                        "/images/rocket.png"
+                        "/images/rocket.png",
                     )
                     this.guidedBulletsCenter.push(guidedBullet1);
                 }
 
-                this.guidedBulletsCenter.forEach((bullet, index)=>{
-                    if(bullet.left > this.width){
-                        bullet.element.remove();
-                        this.guidedBulletsCenter.splice(index, 1);
-                        this.lastMoment = true;
+                this.guidedBulletsCenter.forEach((bullet, index) => {
+                    if (bullet.left > this.width) {
+                      bullet.element.remove();
+                      this.guidedBulletsCenter.splice(index, 1);
+                      this.lastMoment = true;
                     }
-                    if(this.lastMoment){
-                        var topPlayer = this.player.top + this.player.height/2;
-                        bullet.shoot(topPlayer);
+                    if (this.lastMoment) {
+                        bullet.shoot(this.player.top + this.player.height / 2);
                         this.lastMoment = false;
                     }
-                    bullet.shoot(topPlayer);
+                    bullet.shoot(this.player.top + this.player.height / 2);
                 });
         }, 11000);
 
@@ -212,15 +211,19 @@ class Game{
                 this.guidedBulletsLeft.push(guidedBullet2);
             }
             
-            this.guidedBulletsLeft.forEach((bullet, index)=>{
-                if(bullet.left > this.width){
-                    bullet.element.remove();
-                    this.guidedBulletsLeft.splice(index, 1)
-                };
-                bullet.shoot();
- 
+            this.guidedBulletsLeft.forEach((bullet, index) => {
+                if (bullet.left > this.width) {
+                  bullet.element.remove();
+                  this.guidedBulletsLeft.splice(index, 1);
+                  this.lastMoment = true;
+                }
+                if (this.lastMoment) {
+                  bullet.shoot(this.player.top + this.player.height / 2);
+                  this.lastMoment = false;
+                }
+                bullet.shoot(this.player.top + this.player.height / 2);
             });
-        }, 22000)
+        }, 23000)
 
         setTimeout(()=>{
             if(this.guidedBulletsRight.length === 0){
@@ -235,15 +238,19 @@ class Game{
                 this.guidedBulletsRight.push(guidedBullet3);
             }
 
-                this.guidedBulletsRight.forEach((bullet, index)=>{
-                    if(bullet.left > this.width){
-                        bullet.element.remove();
-                        this.guidedBulletsRight.splice(index, 1)
-                    }
-                    bullet.shoot();
-
-                })
-        }, 33000); 
+            this.guidedBulletsRight.forEach((bullet, index) => {
+                if (bullet.left > this.width) {
+                  bullet.element.remove();
+                  this.guidedBulletsRight.splice(index, 1);
+                  this.lastMoment = true;
+                }
+                if (this.lastMoment) {
+                  bullet.shoot(this.player.top + this.player.height / 2);
+                  this.lastMoment = false;
+                }
+                bullet.shoot(this.player.top + this.player.height / 2);
+            });
+        }, 35000); 
 
         if(this.guidedBulletsCenter){
             this.guidedBulletsCenter.forEach((bullet, bulletIndex)=>{
