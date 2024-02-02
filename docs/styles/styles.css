@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'TOPGUN';
-  src: url('/docs/fonts/TopOne-Regular.eot');
-  src: url('/docs/fonts/TopOne-Regular.eot?#iefix') format('embedded-opentype'),
-      url('/docs/fonts/TopOne-Regular.woff2') format('woff2'),
-      url('/docs/fonts/TopOne-Regular.woff') format('woff'),
-      url('/docs/fonts/TopOne-Regular.ttf') format('truetype'),
-      url('/docs/fonts/TopOne-Regular.svg#TopOne-Regular') format('svg');
+  src: url('../fonts/TopOne-Regular.eot');
+  src: url('../fonts/TopOne-Regular.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/TopOne-Regular.woff2') format('woff2'),
+      url('../fonts/TopOne-Regular.woff') format('woff'),
+      url('../fonts/TopOne-Regular.ttf') format('truetype'),
+      url('../fonts/TopOne-Regular.svg#TopOne-Regular') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -22,7 +22,7 @@ body {
 #game-intro{
     /*display: block;*/
     display: block;
-    background-image: url('./docs/images/start-screen.webp');
+    background-image: url('../images/start-screen.webp');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0, 10;
