@@ -350,19 +350,19 @@ class Game{
 
         switch(this.lifes){
             case 5:
-                document.querySelector(".healthbar").src = `/docs/images/health-bar-5.png`
+                document.querySelector(".healthbar").src = `./docs/images/health-bar-5.png`
                 break;
             case 4:
-                document.querySelector(".healthbar").src = `/docs/images/health-bar-4.png`
+                document.querySelector(".healthbar").src = `./docs/images/health-bar-4.png`
                 break;
             case 3:
-                document.querySelector(".healthbar").src = `/docs/images/health-bar-3.png`
+                document.querySelector(".healthbar").src = `./docs/images/health-bar-3.png`
                 break;
             case 2:
-                document.querySelector(".healthbar").src = `/docs/images/health-bar-2.png`
+                document.querySelector(".healthbar").src = `./docs/images/health-bar-2.png`
                 break;
             case 1:
-                document.querySelector(".healthbar").src = `/docs/images/health-bar-1.png`
+                document.querySelector(".healthbar").src = `./docs/images/health-bar-1.png`
                 break;
         }
     }
@@ -387,13 +387,13 @@ class Game{
 
         finalScore.innerHTML = `Your Score: ${this.score}`;
 
-        this.highestScore = localStorage.getItem("highestScore");
-        if (this.score > this.highestScore) {
-            localStorage.setItem("highestScore",this.score);
+        if(this.score > this.highestScore) {
+            highestScore = this.score;
+            localStorage.setItem("highestScore", this.score);
         }
-        let tempScore = document.getElementById("highestScore");
-        tempScore.innerHTML = `Highestscore: ${this.score}`
 
-
+        this.highestScore = localStorage.getItem("highestScore") || 0;
+        console.log("Retrieved highestScore from localStorage:", highestScore);
+        document.querySelector("#highestScore").innerHTML = `Highest Score: ${this.highestScore}`;
     }
 }

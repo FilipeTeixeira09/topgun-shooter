@@ -13,10 +13,21 @@ window.onload = function() {
         location.reload();
     })
 
+    // Load the highest score from localStorage when the page is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+    let theHighestScore = localStorage.getItem("highestScore") || 0;
+
+    // Display the highest score on the starting screen
+    document.getElementById("hs").innerHTML = `Highest Score: ${theHighestScore}`;
+    });
+
+    console.log(localStorage.getItem("highestScore"))
+
     function  startGame(){
         game = new Game();
         game.start();
     };
+
 
     function handleKeyDown(event){
         const key = event.key;
