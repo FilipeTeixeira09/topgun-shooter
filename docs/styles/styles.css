@@ -22,7 +22,7 @@ body {
 #game-intro{
     /*display: block;*/
     display: block;
-    background-image: url('/docs/images/start-screen.webp');
+    background-image: url('./docs/images/start-screen.webp');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0, 10;
