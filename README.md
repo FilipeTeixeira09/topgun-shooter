@@ -19,7 +19,6 @@ In this game, you control a fighter jet and your objective is to destroy enemy j
 | 6 | [Screenshots](#screenshots) |
 | 7 | [Technologies Used](#technologies-used) |
 | 8 | [Credits](#credits) |
-| 9 | [License](#license) |
 
 
 ## 1 - Deployment link
@@ -74,10 +73,6 @@ Or you can also play by using the deployment link: https://filipeteixeira09.gith
 ## 8 - Credits
 
 This game was created by 🛠️ [Filipe](https://github.com/FilipeTeixeira09) and 🛠️ [Diogo](https://github.com/DiogoCoelho98) as a project for the first module of Ironhack WebDev Bootcamp.
-
-## 9 - License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
